@@ -20,7 +20,15 @@ public class ActionFactory {
 		else if (command.equals("logout")) ac = new LogoutAction();
 		else if (command.equals("category")) ac = new CategoryAction();
 		else if (command.equals("productDetail")) ac = new ProductDetailAction();
-		
+		else if (command.equals("cartInsert")) ac = new CartInsertAction();
+		else if (command.equals("cartList")) ac = new CartListAction();
+		else if (command.equals("cartList")) ac = new CartListAction();
+		else if (command.equals("myPage")) ac = new MyPageAction();
+		else if (command.equals("orderAll")) ac = new OrderAllAction();
+		else if (command.equals("cartDelete")) ac = new CartDeleteAction();
+		else if (command.equals("orderInsert")) ac = new OrderInsertAction();
+		else if (command.equals("orderList")) ac = new OrderListAction();
+
 		return ac;
 	}
 }
