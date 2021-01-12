@@ -19,7 +19,7 @@
                 <th>처리상태</th>
             </tr>
             <c:forEach var="order" items="${orderList}" varStatus="status">
-                <tr>
+                <tr style="color:white;">
                     <td>
                         <fmt:formatDate value="${order.indate}" type="date"></fmt:formatDate>
                     </td>

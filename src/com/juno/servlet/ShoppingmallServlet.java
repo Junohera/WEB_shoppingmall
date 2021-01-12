@@ -32,7 +32,6 @@ public class ShoppingmallServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String command = request.getParameter("command");
-		System.out.println("command #########################################");
 		System.out.println(command);
 
 		Action ac = ActionFactory.getIst().getAction(command);

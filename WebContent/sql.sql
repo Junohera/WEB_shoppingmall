@@ -241,3 +241,16 @@ DELETE FROM member
 WHERE id = 'juno';
 
 SELECT * FROM product where pseq = 1;
+
+UPDATE ORDER_DETAIL
+SET
+    RESULT = '2'
+WHERE OSEQ = 21;
+
+select * from member;
+
+select * from product where pseq = 7;
+
+SELECT * FROM ORDERS;
+
+select * from ORDER_DETAIL;

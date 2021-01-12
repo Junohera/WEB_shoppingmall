@@ -1,4 +1,4 @@
-package com.juno.action;
+	package com.juno.action;
 
 public class ActionFactory {
     private ActionFactory() {}
@@ -6,7 +6,6 @@ public class ActionFactory {
     public static ActionFactory getIst() {return ist;}
 	public Action getAction(String command) {
 		Action ac = null;
-		System.out.println("actionFactory ::: " + command);
 		if (command.equals("index")) ac = new IndexAction();
 		else if (command.equals("contract")) ac = new ContractAction();
 		else if (command.equals("loginForm")) ac = new LoginFormAction();
@@ -28,6 +27,8 @@ public class ActionFactory {
 		else if (command.equals("cartDelete")) ac = new CartDeleteAction();
 		else if (command.equals("orderInsert")) ac = new OrderInsertAction();
 		else if (command.equals("orderList")) ac = new OrderListAction();
+		else if (command.equals("orderDetail")) ac = new OrderDetailAction();
+		else if (command.equals("directOrderInsert")) ac = new DirectOrderInsertAction();
 
 		return ac;
 	}

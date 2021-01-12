@@ -21,7 +21,7 @@ public class IndexAction implements Action {
 		
 		ArrayList<ProductVO> newlist = pdao.getNewList();
 		ArrayList<ProductVO> bestlist = pdao.getBestList();
-		
+		                                                                                                                                                                                                                                                                                                                
 		request.setAttribute("newProductList", newlist);
 		request.setAttribute("bestProductList", bestlist);
 

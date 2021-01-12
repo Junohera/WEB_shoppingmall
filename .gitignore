@@ -1,9 +1,9 @@
 .classpath
-bin/
-temp/
+bin
+temp
 .DS_Store
-copy/
-.settings/
-build/
+copy
+.settings
+build
 MANIFEST.MF
-*.class
+.class

@@ -9,7 +9,13 @@ function go_cart() {
 };
 
 function go_order() {
-    document.formm
+    if (document.formm.quantity.value === "") {
+        alert("수량을 입력하세요.");
+        document.formm.quantity.focus();
+    } else {
+        document.formm.action = "shop.do?command=directOrderInsert";
+        document.formm.submit();
+    }
 };
 
 function go_cart_delete() {

@@ -11,34 +11,31 @@ import javax.servlet.http.HttpSession;
 import com.juno.dto.MemberVO;
 import com.juno.dto.OrderVO;
 
-public class OrderAllAction implements Action {
+public class OrderDetailAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "mypage/mypage.jsp";
+		String url = "mypage/orderDetail.jsp";
 		HttpSession session = request.getSession();
 		MemberVO member = (MemberVO) session.getAttribute("loginUser");
 		if (member == null) {
 			url = "shop.do?command=loginForm";
 		} else {
-			ArrayList<OrderVO> orderList = new ArrayList<OrderVO>(); 
-			ArrayList<Integer> oseqList = OrderDAO.getIst().oseqListAll(member.getId());
+			int oseq = Integer.parseInt(request.getParameter("oseq"));
 			
-			for (int oseq: oseqList) {
-				ArrayList<OrderVO> orderListAll = OrderDAO.getIst().listOrderById2(member.getId(), oseq);
-				OrderVO ovo = orderListAll.get(0);
-				ovo.setPname(ovo.getPname() + "포함" + orderListAll.size() + "건");
-				int totalPrice = 0;
-				for (OrderVO ovo1 : orderListAll) {
-					totalPrice += ovo1.getPrice2() * ovo1.getQuantity();
-				}
-				ovo.setPrice2(totalPrice);
-				orderList.add(ovo);
+			OrderDAO odao = OrderDAO.getIst();
+			
+			ArrayList<OrderVO> orderList = odao.listOrderById2(member.getId(), oseq);
+			
+			int totalPrice = 0;
+			for (OrderVO ovo : orderList) {
+				totalPrice += ovo.getPrice2() * ovo.getQuantity();
 			}
-			request.setAttribute("title", "총 주문내역");
+			
+			request.setAttribute("orderDetail", orderList.get(0));
 			request.setAttribute("orderList", orderList);
+			request.setAttribute("totalPrice", totalPrice);
 		}
-		
 		request.getRequestDispatcher(url).forward(request, response);
 	}
 
