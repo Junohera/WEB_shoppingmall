@@ -204,6 +204,7 @@ public class OrderDAO {
 				product.setBestyn(rs.getString("bestyn"));
 				product.setIndate(rs.getTimestamp("indate"));
 			}
+			pstmt.close();
 			
 			/** 2. 전달된 아이디를 이용하여 orders 테이블에 레코드를 추가합니다.*/
 			sql = "INSERT INTO ORDERS (OSEQ, ID) VALUES (ORDERS_SEQ.NEXTVAL, ?)";

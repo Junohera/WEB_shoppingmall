@@ -29,6 +29,7 @@ public class ActionFactory {
 		else if (command.equals("orderList")) ac = new OrderListAction();
 		else if (command.equals("orderDetail")) ac = new OrderDetailAction();
 		else if (command.equals("directOrderInsert")) ac = new DirectOrderInsertAction();
+		else if (command.equals("qnaList")) ac = new QnaListAction();
 
 		return ac;
 	}
