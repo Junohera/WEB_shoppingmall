@@ -254,3 +254,7 @@ select * from product where pseq = 7;
 SELECT * FROM ORDERS;
 
 select * from ORDER_DETAIL;
+
+select * from qna;
+
+DELETE FROM qna;

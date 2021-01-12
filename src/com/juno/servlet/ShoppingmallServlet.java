@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.juno.action.Action;
-import com.juno.action.ActionFactory;
+import com.juno.controller.action.Action;
+import com.juno.controller.action.ActionFactory;
 
 /**
  * Servlet implementation class ShoppingmallServlet
