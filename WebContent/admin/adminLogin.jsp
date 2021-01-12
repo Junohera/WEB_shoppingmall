@@ -2,25 +2,36 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ include file="../header.jsp"%>
-
-<%@ include file="sub_img.html" %>
-<%@ include file="sub_menu.html" %>
-
-<article>
-    <h1>Login</h1>
-    <form action="shop.do" method="POST" name="loginFrm">
-        <input type="hidden" name="command" value="login">
-        <fieldset><legend></legend>
-            <label>User ID</label><input type="text" name="id"><br>
-            <label>Password</label><input type="password" name="pwd"><br>
-        </fieldset>
-        <div id="buttons">
-            <input type="submit" value="login" class="submit" onclick="return loginCheck();">
-            <input type="button" value="sign Up" class="cancel"  onclick="location.href='shop.do?command=contract'">
-            <input type="button" value="find id/pw" class="submit" onclick="find_id();">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="admin/css/admin.css">
+</head>
+<body>
+    <header>
+        <div id="logo">
+            <img src="admin/images/bar_01.gif" style="float:left;">
+            <img src="admin/images/text.gif">
         </div>
-    </form>
-</article>
-
-<%@ include file="../footer.jsp"%>
+    </header>
+    <div class="clear"></div>
+    <article>
+        <div id="loginform">
+            <form name="frm" method="POST" action="shop.do?command=adminLogin">
+                <table>
+                    <tr><td>아이디</td><td><input type="text" name="workId" id="workId" size="10"></td></tr>
+                    <tr><td>비밀번호</td><td><input type="password" name="workPwd" id="workPwd" size="10"></td></tr>
+                    <tr align="center">
+                        <td colspan="2"><input class="btn" type="submit" value="업무 로그인" onclick="return workerCheck();"><br><br>
+                            <h4 style="color:red;">${message}</h4>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </article>
+</body>
+</html>
