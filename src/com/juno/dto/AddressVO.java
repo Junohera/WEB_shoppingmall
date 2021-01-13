@@ -1,4 +1,4 @@
-package com.juno.controller.action;
+package com.juno.dto;
 
 public class AddressVO {
     private String zip_num;

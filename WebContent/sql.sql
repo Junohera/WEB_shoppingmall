@@ -134,6 +134,18 @@ insert into product(pseq, name, kind, price1, price2, price3, content, image, be
 insert into product(pseq, name, kind, price1, price2, price3, content, image) values( product_seq.nextval, '스니커즈', '4', 15000, 20000, 5000,'활동성이 좋은 스니커즈입니다.', 'w1.jpg');​
 insert into product(pseq, name, kind, price1, price2, price3, content, image, bestyn) values( product_seq.nextval, '샌달', '3', 5000, 5500, 500, '사계절용 샌달입니다.', 'w-09.jpg','n');​
 insert into product(pseq, name, kind, price1, price2, price3, content, image, bestyn) values( product_seq.nextval, '스니커즈', '5', 15000, 20000, 5000, '활동성이 좋은 스니커즈입니다.', 'w-05.jpg','n');
+
+insert into product(pseq, name, kind, price1, price2, price3, content, image, bestyn) values( product_seq.nextval, '남성용 구두1', '2', 40000, 50000, 10000, '활동성이 좋은 힐입니다.', 'w-14.jpg','n');
+insert into product(pseq, name, kind, price1, price2, price3, content, image, bestyn) values( product_seq.nextval, '남성용 구두2', '2', 40000, 50000, 10000, '활동성이 좋은 힐입니다.', 'w-14.jpg','n');
+insert into product(pseq, name, kind, price1, price2, price3, content, image, bestyn) values( product_seq.nextval, '남성용 구두3', '2', 40000, 50000, 10000, '활동성이 좋은 힐입니다.', 'w-14.jpg','n');
+insert into product(pseq, name, kind, price1, price2, price3, content, image, bestyn) values( product_seq.nextval, '남성용 구두4', '2', 40000, 50000, 10000, '활동성이 좋은 힐입니다.', 'w-14.jpg','n');
+insert into product(pseq, name, kind, price1, price2, price3, content, image, bestyn) values( product_seq.nextval, '남성용 구두5', '2', 40000, 50000, 10000, '활동성이 좋은 힐입니다.', 'w-14.jpg','n');
+insert into product(pseq, name, kind, price1, price2, price3, content, image, bestyn) values( product_seq.nextval, '남성용 구두6', '2', 40000, 50000, 10000, '활동성이 좋은 힐입니다.', 'w-14.jpg','n');
+insert into product(pseq, name, kind, price1, price2, price3, content, image, bestyn) values( product_seq.nextval, '남성용 구두7', '2', 40000, 50000, 10000, '활동성이 좋은 힐입니다.', 'w-14.jpg','n');
+insert into product(pseq, name, kind, price1, price2, price3, content, image, bestyn) values( product_seq.nextval, '남성용 구두8', '2', 40000, 50000, 10000, '활동성이 좋은 힐입니다.', 'w-14.jpg','n');
+insert into product(pseq, name, kind, price1, price2, price3, content, image, bestyn) values( product_seq.nextval, '남성용 구두9', '2', 40000, 50000, 10000, '활동성이 좋은 힐입니다.', 'w-14.jpg','n');
+insert into product(pseq, name, kind, price1, price2, price3, content, image, bestyn) values( product_seq.nextval, '남성용 구두10', '2', 40000, 50000, 10000, '활동성이 좋은 힐입니다.', 'w-14.jpg','n');
+
 SELECT * FROM PRODUCT;
 
 INSERT INTO CART(CSEQ, ID, PSEQ, QUANTITY) VALUES (CART_SEQ.NEXTVAL, 'one', 1, 1);

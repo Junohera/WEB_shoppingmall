@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.juno.dao.MemberDAO;
+import com.juno.dto.AddressVO;
 
 public class FindZipNumAction implements Action {
 

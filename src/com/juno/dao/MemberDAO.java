@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.juno.controller.action.AddressVO;
+import com.juno.dto.AddressVO;
 import com.juno.dto.MemberVO;
 import com.juno.util.Dbman;
 

@@ -9,8 +9,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="admin/css/admin.css">
+    <script>
+        function workerCheck() {
+            if (document.frm.workId.value === "") {
+                alert("아이디를 입력하세요");
+                return false;
+            } else if (document.frm.workPwd.value === "") {
+                alert("비밀번호를 입력하세요");
+                return false;
+            }
+            return true;
+        };
+    </script>
 </head>
 <body>
+	<div id="wrap">
     <header>
         <div id="logo">
             <img src="admin/images/bar_01.gif" style="float:left;">
@@ -20,7 +33,8 @@
     <div class="clear"></div>
     <article>
         <div id="loginform">
-            <form name="frm" method="POST" action="shop.do?command=adminLogin">
+            <form name="frm" method="POST" action="shop.do">
+                <input type="hidden" name="command" value="adminLogin">
                 <table>
                     <tr><td>아이디</td><td><input type="text" name="workId" id="workId" size="10"></td></tr>
                     <tr><td>비밀번호</td><td><input type="password" name="workPwd" id="workPwd" size="10"></td></tr>
@@ -33,5 +47,6 @@
             </form>
         </div>
     </article>
+    </div>
 </body>
 </html>

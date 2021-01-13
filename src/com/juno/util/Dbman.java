@@ -31,7 +31,7 @@ public class Dbman {
 	
 	public static void close(Connection con, PreparedStatement pstmt, ResultSet rs) {
 		try {
-			if (rs != null) rs.close();
+			if (con != null) con.close();
 			if (pstmt != null) pstmt.close();
 			if (rs != null) rs.close();
 		} catch (Exception e) {

@@ -1,6 +1,8 @@
 package com.juno.controller.action;
 
 import com.juno.admin.controller.action.AdminAction;
+import com.juno.admin.controller.action.AdminLoginAction;
+import com.juno.admin.controller.action.AdminProductListAction;
 
 public class ActionFactory {
     private ActionFactory() {}
@@ -8,6 +10,8 @@ public class ActionFactory {
     public static ActionFactory getIst() {return ist;}
 	public Action getAction(String command) {
 		Action ac = null;
+		
+		System.out.println(command + " actionFactory ");
 		
 		/** user */
 		if (command.equals("index")) ac = new IndexAction();
@@ -41,7 +45,12 @@ public class ActionFactory {
 		else if (command.equals("qnaUpdate")) ac = new QnaUpdateAction();
 		
 		/** admin */
-		else if (command.equals("amdin")) ac = new AdminAction();
+		else if (command.equals("admin")) ac = new AdminAction();
+		else if (command.equals("adminLogin")) ac = new AdminLoginAction();
+		else if (command.equals("adminProductList")) ac = new AdminProductListAction();
+		else if (command.equals("adminProductDetail")) ac = new AdminProductDetailAction();
+		else if (command.equals("adminProductWriteForm")) ac = new AdminProductWriteFormAction();
+		else if (command.equals("adminProductWrite")) ac = new AdminProductWriteAction();
 		
 		return ac;
 	}
