@@ -2,7 +2,18 @@ package com.juno.controller.action;
 
 import com.juno.admin.controller.action.AdminAction;
 import com.juno.admin.controller.action.AdminLoginAction;
+import com.juno.admin.controller.action.AdminMemberListAction;
+import com.juno.admin.controller.action.AdminOrderListAction;
+import com.juno.admin.controller.action.AdminOrderSaveAction;
+import com.juno.admin.controller.action.AdminProductDetailAction;
 import com.juno.admin.controller.action.AdminProductListAction;
+import com.juno.admin.controller.action.AdminProductUpdateAction;
+import com.juno.admin.controller.action.AdminProductUpdateFormAction;
+import com.juno.admin.controller.action.AdminProductWriteAction;
+import com.juno.admin.controller.action.AdminProductWriteFormAction;
+import com.juno.admin.controller.action.AdminQnaAnswerFormAction;
+import com.juno.admin.controller.action.AdminQnaDetailAction;
+import com.juno.admin.controller.action.AdminQnaListAction;
 
 public class ActionFactory {
     private ActionFactory() {}
@@ -51,7 +62,15 @@ public class ActionFactory {
 		else if (command.equals("adminProductDetail")) ac = new AdminProductDetailAction();
 		else if (command.equals("adminProductWriteForm")) ac = new AdminProductWriteFormAction();
 		else if (command.equals("adminProductWrite")) ac = new AdminProductWriteAction();
-		
+		else if (command.equals("adminProductUpdateForm")) ac = new AdminProductUpdateFormAction();
+		else if (command.equals("adminProductUpdate")) ac = new AdminProductUpdateAction();
+		else if (command.equals("adminMemberList")) ac = new AdminMemberListAction();
+		else if (command.equals("adminOrderList")) ac = new AdminOrderListAction();
+		else if (command.equals("adminQnaList")) ac = new AdminQnaListAction();
+		else if (command.equals("adminOrderSave")) ac = new AdminOrderSaveAction();
+		else if (command.equals("adminQnaDetail")) ac = new AdminQnaDetailAction();
+		else if (command.equals("adminQnaAnswerForm")) ac = new AdminQnaAnswerFormAction();
+
 		return ac;
 	}
 }

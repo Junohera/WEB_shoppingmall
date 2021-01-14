@@ -33,7 +33,7 @@
                 <tr>
                     <th>상품이미지</th>
                     <td colspan="5" align="center">
-                        <img src="product_images/${p.image}" width="200px">
+                        <img src="product_images/${p.image}" width="200pt">
                     </td>
                 </tr>
             </table>

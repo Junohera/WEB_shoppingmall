@@ -52,7 +52,7 @@
                 </tr>
             </table>
             <input type="button" value="등록" class="btn" onclick="go_save()">
-            <input type="button" value="취소" class="btn" onclick="go_mov()">
+            <input type="button" value="목록" class="btn" onclick="go_mov()">
         </form>
     </article>
 <%@ include file="/admin/footer.jsp"%>

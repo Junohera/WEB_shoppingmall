@@ -11,22 +11,20 @@ import javax.servlet.http.HttpSession;
 import com.juno.controller.action.Action;
 import com.juno.dao.AdminDAO;
 import com.juno.dto.AdminVO;
-import com.juno.dto.ProductVO;
+import com.juno.dto.QnaVO;
 import com.juno.util.Paging;
 
-public class AdminProductListAction implements Action {
+public class AdminQnaListAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "admin/product/productList.jsp";
+		String url = "admin/qna/qnaList.jsp";
 		HttpSession session = request.getSession();
 		AdminVO admin = (AdminVO) session.getAttribute("loginAdmin");
-		
 		if (admin == null) {
 			url = "shop.do?command=admin";
 		} else {
-			/** <paging> */
-			int page = 1;
+			int page = 0;
 			if (request.getParameter("page") != null) {
 				page = Integer.parseInt(request.getParameter("page"));
 				session.setAttribute("page", page);
@@ -36,21 +34,17 @@ public class AdminProductListAction implements Action {
 				page = 1;
 				session.removeAttribute("page");
 			}
-			
-			Paging paging = new Paging();
-			paging.setPage(page);
-			
-			int totalCount = AdminDAO.getIst().getAllCount("product");
-			paging.setTotalCount(totalCount);
 
-			/** </paging> */
-			
-			ArrayList<ProductVO> productList = AdminDAO.getIst().listProduct(paging);
-			request.setAttribute("productList", productList);
-			request.setAttribute("paging", paging);
+			 Paging paging = new Paging();
+			 paging.setPage(page);
+			 int totalCount = AdminDAO.getIst().getAllCount("qna");
+			 paging.setTotalCount(totalCount);
+
+			 ArrayList<QnaVO> list = AdminDAO.getIst().listQna(paging);
+			 request.setAttribute("qnaList", list);
+			 request.setAttribute("paging", paging);
 		}
-
 		request.getRequestDispatcher(url).forward(request, response);
-	} 
+	}
 
 }

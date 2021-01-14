@@ -1,4 +1,4 @@
-package com.juno.controller.action;
+package com.juno.admin.controller.action;
 
 import java.io.IOException;
 
@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.juno.controller.action.Action;
 import com.juno.dao.ProductDAO;
 import com.juno.dto.AdminVO;
 import com.juno.dto.ProductVO;
