@@ -126,5 +126,74 @@ public class MemberDAO {
 		} finally {Dbman.close(con, pstmt, rs);}
 	}
 
+	public MemberVO confirmPhone(String name, String phone) {
+		MemberVO m = null;
+		String sql = "SELECT * FROM MEMBER WHERE NAME = ?, PHONE = ?";
+		
+		try {
+			con = Dbman.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setString(2, phone);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				m = new MemberVO();
+				m.setId(rs.getString("id"));
+                m.setPwd(rs.getString("pwd"));
+                m.setName(rs.getString("name"));
+                m.setEmail(rs.getString("email"));
+                m.setZip_num(rs.getString("zip_num"));
+                m.setAddress(rs.getString("address"));
+                m.setPhone(rs.getString("phone"));
+                m.setUseyn(rs.getString("useyn"));
+                m.setIndate(rs.getTimestamp("indate"));
+			}
+		} catch (SQLException e ) {e.printStackTrace();
+		} finally {Dbman.close(con, pstmt, rs);}
+		return m;
+	}
+
+	public MemberVO confirmIdNamePhone(String id, String name, String phone) {
+		MemberVO m = null;
+		String sql = "SELECT * FROM MEMBER WHERE ID = ?, NAME = ?, PHONE = ?";
+		
+		try {
+			con = Dbman.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, name);
+			pstmt.setString(3, phone);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				m = new MemberVO();
+				m.setId(rs.getString("id"));
+                m.setPwd(rs.getString("pwd"));
+                m.setName(rs.getString("name"));
+                m.setEmail(rs.getString("email"));
+                m.setZip_num(rs.getString("zip_num"));
+                m.setAddress(rs.getString("address"));
+                m.setPhone(rs.getString("phone"));
+                m.setUseyn(rs.getString("useyn"));
+                m.setIndate(rs.getTimestamp("indate"));
+			}
+		} catch (SQLException e ) {e.printStackTrace();
+		} finally {Dbman.close(con, pstmt, rs);}
+		return m;
+	}
+
+	public void resetPw(MemberVO member) {
+		String sql = "UPDATE MEMBER SET PWD = ? WHERE ID = ?";
+		con = Dbman.getConnection();
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, member.getPwd());
+			pstmt.setString(2, member.getId());
+			pstmt.executeUpdate();
+		} catch (SQLException e ) {e.printStackTrace();
+		} finally {Dbman.close(con, pstmt, rs);}
+	}
+
     
 }

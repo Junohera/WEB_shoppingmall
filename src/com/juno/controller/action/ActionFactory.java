@@ -1,5 +1,6 @@
 package com.juno.controller.action;
 
+import com.juno.admin.controller.AdminLogoutAction;
 import com.juno.admin.controller.action.AdminAction;
 import com.juno.admin.controller.action.AdminLoginAction;
 import com.juno.admin.controller.action.AdminMemberListAction;
@@ -11,7 +12,7 @@ import com.juno.admin.controller.action.AdminProductUpdateAction;
 import com.juno.admin.controller.action.AdminProductUpdateFormAction;
 import com.juno.admin.controller.action.AdminProductWriteAction;
 import com.juno.admin.controller.action.AdminProductWriteFormAction;
-import com.juno.admin.controller.action.AdminQnaAnswerFormAction;
+import com.juno.admin.controller.action.AdminQnaAttachAnswerAction;
 import com.juno.admin.controller.action.AdminQnaDetailAction;
 import com.juno.admin.controller.action.AdminQnaListAction;
 
@@ -54,6 +55,15 @@ public class ActionFactory {
 		else if (command.equals("qnaWrite")) ac = new QnaWriteAction();
 		else if (command.equals("qnaUpdateForm")) ac = new QnaUpdateFormAction();
 		else if (command.equals("qnaUpdate")) ac = new QnaUpdateAction();
+		else if (command.equals("findIdPw")) ac = new FindIdPwAction();
+		else if (command.equals("findId")) ac = new FindIdAction();
+		else if (command.equals("findIdStep2")) ac = new FindIdStep2Action();
+		else if (command.equals("findIdStep3")) ac = new FindIdStep3Action();
+		else if (command.equals("findIdStep3")) ac = new FindIdStep3Action();
+		else if (command.equals("findPwForm")) ac = new FindPwFormAction();
+		else if (command.equals("findPwStep3")) ac = new FindPwStep3Action();
+		else if (command.equals("resetPw")) ac = new ResetPwAction();
+		
 		
 		/** admin */
 		else if (command.equals("admin")) ac = new AdminAction();
@@ -69,7 +79,11 @@ public class ActionFactory {
 		else if (command.equals("adminQnaList")) ac = new AdminQnaListAction();
 		else if (command.equals("adminOrderSave")) ac = new AdminOrderSaveAction();
 		else if (command.equals("adminQnaDetail")) ac = new AdminQnaDetailAction();
-		else if (command.equals("adminQnaAnswerForm")) ac = new AdminQnaAnswerFormAction();
+		else if (command.equals("adminQnaAttachAnswer")) ac = new AdminQnaAttachAnswerAction();
+		
+		else if (command.equals("adminLogout")) ac = new AdminLogoutAction();
+
+		
 
 		return ac;
 	}

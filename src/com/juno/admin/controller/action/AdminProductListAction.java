@@ -25,6 +25,24 @@ public class AdminProductListAction implements Action {
 		if (admin == null) {
 			url = "shop.do?command=admin";
 		} else {
+
+			if (request.getParameter("first") != null) {
+				session.removeAttribute("page");
+				session.removeAttribute("key");
+			}
+			
+			String key = "";
+			
+			if (request.getParameter("key") != null) {
+				key = request.getParameter("key");
+				session.setAttribute("key", key);
+			} else if (session.getAttribute("key") != null) {
+				key = (String) session.getAttribute("key");
+			} else {
+				session.removeAttribute("key");
+				key = "";
+			}
+			
 			/** <paging> */
 			int page = 1;
 			if (request.getParameter("page") != null) {
@@ -40,12 +58,12 @@ public class AdminProductListAction implements Action {
 			Paging paging = new Paging();
 			paging.setPage(page);
 			
-			int totalCount = AdminDAO.getIst().getAllCount("product");
+			int totalCount = AdminDAO.getIst().getAllCount("product", "name" ,key);
 			paging.setTotalCount(totalCount);
 
 			/** </paging> */
 			
-			ArrayList<ProductVO> productList = AdminDAO.getIst().listProduct(paging);
+			ArrayList<ProductVO> productList = AdminDAO.getIst().listProduct(paging, key);
 			request.setAttribute("productList", productList);
 			request.setAttribute("paging", paging);
 		}

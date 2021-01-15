@@ -389,3 +389,6 @@ DELETE FROM qna;
 select * from product;
 
 SELECT * FROM qna;
+
+
+SELECT * FROM ORDER_VIEW WHERE MNAME LIKE '%최준호%';

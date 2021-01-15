@@ -1,6 +1,6 @@
 function go_mov() {
     location.href="shop.do?command=adminProductList";
-}
+};
 
 function go_save() {
     if (document.frm.kind.value === "") {
@@ -106,7 +106,12 @@ function go_view(qseq) {
     document.frm.submit();
 };
 
-function go_rep(qseq) {
-    document.frm.action = "shop.do?command=adminQnaAnswerForm&qseq=" + qseq;
+function go_rep() {
+    document.frm.action = "shop.do?command=adminQnaAttachAnswer";
+    document.frm.submit();
+};
+
+function go_list() {
+    document.frm.action = "shop.do?command=adminQnaList";
     document.frm.submit();
 };

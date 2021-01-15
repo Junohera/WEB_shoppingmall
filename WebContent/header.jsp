@@ -48,7 +48,8 @@
 					<li><a href="shop.do?command=category&kind=2">Boots</a></li>
 					<li><a href="shop.do?command=category&kind=3">Sandals</a></li>
 					<li><a href="shop.do?command=category&kind=4">Sneakers</a></li>
-					<li><a href="shop.do?command=category&kind=5">On Sale</a></li>
+					<li><a href="shop.do?command=category&kind=5">Slipper</a></li>
+					<li><a href="shop.do?command=category&kind=6">On Sale</a></li>
 				</ul>
 			</nav>
 		</header>

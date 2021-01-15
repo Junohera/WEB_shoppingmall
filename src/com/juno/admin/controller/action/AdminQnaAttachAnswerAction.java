@@ -11,7 +11,7 @@ import com.juno.dao.AdminDAO;
 import com.juno.dto.AdminVO;
 import com.juno.dto.QnaVO;
 
-public class AdminQnaAnswerFormAction implements Action {
+public class AdminQnaAttachAnswerAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,7 +28,7 @@ public class AdminQnaAnswerFormAction implements Action {
 			url += "&qseq=" + q.getQseq(); 
 		}
 		
-		request.getRequestDispatcher(url).forward(request, response);
+		response.sendRedirect(url);
 	}
 
 }

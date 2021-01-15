@@ -13,17 +13,17 @@
         <table id="orderList">
             <tr>
                 <th width="20%">제목</th>
-                <td>${q.subject} ${q.rep}</td>
+                <td align="left">${q.subject} ${q.rep}</td>
             </tr>
             <tr>
                 <th>등록일</th>
-                <td>
+                <td align="left">
                     <fmt:formatDate value="${q.indate}"></fmt:formatDate>
                 </td>
             </tr>
             <tr>
                 <th>내용</th>
-                <td>${q.content}</td>
+                <td align="left">${q.content}</td>
             </tr>
         </table>
         <c:choose>
@@ -35,7 +35,7 @@
                     <tr>
                         <td colspan="2">
                             <textarea name="reply" cols="50" rows="3"></textarea>
-                            <input type="button" value="저장" class="btn" onclick="go_rep('${q.qseq}');">
+                            <input type="button" value="저장" class="btn" onclick="go_rep();">
                         </td>
                     </tr>
                 </table>
@@ -44,11 +44,12 @@
                 <table id="orderList">
                     <tr>
                         <th>댓글</th>
-                        <td>${q.reply}</td>
+                        <td align="left">${q.reply}</td>
                     </tr>
                 </table>
             </c:otherwise>
         </c:choose>
+        <input type="button" value="목록" class="btn" onclick="go_list();">
     </form>
 </article>
 

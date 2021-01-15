@@ -22,7 +22,6 @@ public class LoginAction implements Action {
 		MemberVO member = MemberDAO.getIst().getMember(id);
 		
 		HttpSession session = request.getSession();
-		System.out.println("logionAction");
 		if (member != null) {
 			if (member.getPwd() != null) {
 				if (member.getPwd().equals(pwd)) {

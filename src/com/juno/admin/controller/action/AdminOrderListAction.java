@@ -24,6 +24,24 @@ public class AdminOrderListAction implements Action {
 		if (admin == null) {
 			url = "shop.do?command=admin";
 		} else {
+			
+			if (request.getParameter("first") != null) {
+				session.removeAttribute("page");
+				session.removeAttribute("key");
+			}
+			
+			String key = "";
+			
+			if (request.getParameter("key") != null) {
+				key = request.getParameter("key");
+				session.setAttribute("key", key);
+			} else if (session.getAttribute("key") != null) {
+				key = (String) session.getAttribute("key");
+			} else {
+				session.removeAttribute("key");
+				key = "";
+			}
+			
 			int page = 0;
 			if (request.getParameter("page") != null) {
 				page = Integer.parseInt(request.getParameter("page"));
@@ -37,10 +55,10 @@ public class AdminOrderListAction implements Action {
 
 			Paging paging = new Paging();
 			paging.setPage(page);
-			int totalCount = AdminDAO.getIst().getAllCount("order_view");
+			int totalCount = AdminDAO.getIst().getAllCount("order_view", "mname", key);
 			paging.setTotalCount(totalCount);
 
-			ArrayList<OrderVO> list = AdminDAO.getIst().listOrder(paging);
+			ArrayList<OrderVO> list = AdminDAO.getIst().listOrder(paging, key);
 			request.setAttribute("orderList", list);
 			request.setAttribute("paging", paging);
 		}

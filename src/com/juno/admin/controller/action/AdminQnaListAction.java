@@ -24,6 +24,23 @@ public class AdminQnaListAction implements Action {
 		if (admin == null) {
 			url = "shop.do?command=admin";
 		} else {
+			if (request.getParameter("first") != null) {
+				session.removeAttribute("page");
+				session.removeAttribute("key");
+			}
+			
+			String key = "";
+			
+			if (request.getParameter("key") != null) {
+				key = request.getParameter("key");
+				session.setAttribute("key", key);
+			} else if (session.getAttribute("key") != null) {
+				key = (String) session.getAttribute("key");
+			} else {
+				session.removeAttribute("key");
+				key = "";
+			}
+			
 			int page = 0;
 			if (request.getParameter("page") != null) {
 				page = Integer.parseInt(request.getParameter("page"));
@@ -37,10 +54,10 @@ public class AdminQnaListAction implements Action {
 
 			 Paging paging = new Paging();
 			 paging.setPage(page);
-			 int totalCount = AdminDAO.getIst().getAllCount("qna");
+			 int totalCount = AdminDAO.getIst().getAllCount("QNA", "subject", key);
 			 paging.setTotalCount(totalCount);
 
-			 ArrayList<QnaVO> list = AdminDAO.getIst().listQna(paging);
+			 ArrayList<QnaVO> list = AdminDAO.getIst().listQna(paging, key);
 			 request.setAttribute("qnaList", list);
 			 request.setAttribute("paging", paging);
 		}

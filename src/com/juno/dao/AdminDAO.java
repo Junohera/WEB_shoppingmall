@@ -45,14 +45,14 @@ public class AdminDAO {
 		return a;
 	}
 
-	public ArrayList<ProductVO> listProduct(Paging paging) {
+	public ArrayList<ProductVO> listProduct(Paging paging, String key) {
 		ArrayList<ProductVO> list = new ArrayList<ProductVO>();
 
 		/** <sql> */
 		String sql = "SELECT * FROM "
 				+ " (SELECT * FROM "
 				+ " (SELECT ROWNUM AS RN, T.* FROM "
-				+ " (SELECT * FROM PRODUCT ORDER BY PSEQ DESC) T"
+				+ " (SELECT * FROM PRODUCT WHERE NAME LIKE '%'||?||'%' ORDER BY PSEQ DESC) T"
 				+ " ) WHERE RN >= ?"
 				+ " ) WHERE RN <= ?";
 		/** </sql> */
@@ -60,8 +60,9 @@ public class AdminDAO {
 		try {
 			con = Dbman.getConnection();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, paging.getStartNum());
-			pstmt.setInt(2, paging.getEndNum());
+			pstmt.setString(1, key);
+			pstmt.setInt(2, paging.getStartNum());
+			pstmt.setInt(3, paging.getEndNum());
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
@@ -85,12 +86,14 @@ public class AdminDAO {
 		return list;
 	}
 
-	public int getAllCount(String tableName) {
+	public int getAllCount(String tableName, String fieldName, String key) {
 		int count = 0;
-		String sql = "SELECT COUNT(*) as count from " + tableName;
+		String sql = "SELECT COUNT(*) as count from " + tableName
+				+ " WHERE " + fieldName + " LIKE '%'||?||'%'";
 		try {
 			con = Dbman.getConnection();
 			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, key);
 			rs = pstmt.executeQuery();
 			
 			if (rs.next()) {
@@ -101,7 +104,7 @@ public class AdminDAO {
 		
 		return count;
 	}
-
+	
 	public void insertProduct(ProductVO p) {
 		String sql = "INSERT INTO PRODUCT(PSEQ, KIND, NAME, PRICE1, PRICE2, PRICE3, CONTENT, IMAGE) VALUES(PRODUCT_SEQ.NEXTVAL, ?, ?, ?, ?, ?, ?, ?)";
 		try {
@@ -139,19 +142,20 @@ public class AdminDAO {
 		} finally {Dbman.close(con, pstmt, rs);}
 	}
 
-	public ArrayList<MemberVO> listMember(Paging paging) {
+	public ArrayList<MemberVO> listMember(Paging paging, String fieldName, String key) {
 		ArrayList<MemberVO> list = new ArrayList<MemberVO>();
 		String sql = ""
 			+ "SELECT * FROM ("
 			+ "SELECT * FROM ("
-			+ "SELECT ROWNUM AS RN, M.* FROM ((select * from member order by indate desc) m)"
+			+ "SELECT ROWNUM AS RN, M.* FROM ((select * from member where " + fieldName + " like '%'||?||'%' order by indate desc) m)"
 			+ ") WHERE RN >= ?"
 			+ ") WHERE RN <= ?";
 		try {
 			con = Dbman.getConnection();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, paging.getStartNum());
-			pstmt.setInt(2, paging.getEndNum());
+			pstmt.setString(1, key);
+			pstmt.setInt(2, paging.getStartNum());
+			pstmt.setInt(3, paging.getEndNum());
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
@@ -184,21 +188,22 @@ public class AdminDAO {
 		} finally {Dbman.close(con, pstmt, rs);}
 	}
 
-	public ArrayList<OrderVO> listOrder(Paging paging) {
+	public ArrayList<OrderVO> listOrder(Paging paging, String key) {
 		ArrayList<OrderVO> list = new ArrayList<OrderVO>();
 		
 		String sql = "SELECT * FROM ("
 			+ "SELECT * FROM ("
 			+ "SELECT ROWNUM AS RN, O.* FROM"
-		 	+ "((SELECT * FROM ORDER_VIEW ORDER BY RESULT, oseq DESC) O)"
+		 	+ "((SELECT * FROM ORDER_VIEW WHERE MNAME LIKE '%'||?||'%' ORDER BY RESULT, oseq DESC) O)"
 			+ ") WHERE RN >= ?"
 			+ ") WHERE RN <= ?";
 
 		try {
 			con = Dbman.getConnection();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, paging.getStartNum());
-			pstmt.setInt(2, paging.getEndNum());
+			pstmt.setString(1, key);
+			pstmt.setInt(2, paging.getStartNum());
+			pstmt.setInt(3, paging.getEndNum());
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
@@ -226,21 +231,22 @@ public class AdminDAO {
 		return list;
 	}
 
-	public ArrayList<QnaVO> listQna(Paging paging) {
+	public ArrayList<QnaVO> listQna(Paging paging, String key) {
 		ArrayList<QnaVO> list = new ArrayList<QnaVO>();
 		
 		String sql = "SELECT * FROM ("
 			+ "SELECT * FROM ("
 			+ "SELECT ROWNUM AS RN, O.* FROM"
-		 	+ "((SELECT * FROM QNA ORDER BY QSEQ DESC) O)"
+		 	+ "((SELECT * FROM QNA WHERE SUBJECT LIKE '%'||?||'%' ORDER BY QSEQ DESC) O)"
 			+ ") WHERE RN >= ?"
 			+ ") WHERE RN <= ?";
 
 		try {
 			con = Dbman.getConnection();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, paging.getStartNum());
-			pstmt.setInt(2, paging.getEndNum());
+			pstmt.setString(1, key);
+			pstmt.setInt(2, paging.getStartNum());
+			pstmt.setInt(3, paging.getEndNum());
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
@@ -289,7 +295,7 @@ public class AdminDAO {
 	}
 
 	public void qnaAttachAnswer(QnaVO q) {
-		String sql = "UPDATE QNA SET REPLY = ?, REP = 2 WHERE QSEQ = ?";
+		String sql = "UPDATE QNA SET REPLY = ?, REP = '2' WHERE QSEQ = ?";
 		try {
 			con = Dbman.getConnection();
 			pstmt = con.prepareStatement(sql);

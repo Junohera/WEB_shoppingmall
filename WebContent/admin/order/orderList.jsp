@@ -4,7 +4,19 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ include file="/admin/header.jsp"%>
 <%@ include file="/admin/sub_menu.jsp"%>
+<script>
+function go_search_order() {
+	if (document.frm.key.value === "") return;
+	document.frm.action = "shop.do?command=adminOrderList&page=1";
+	document.frm.submit();
+}
 
+function go_total() {
+	document.frm.key.value = "";
+	document.frm.action = "shop.do?command=adminOrderList&page=1";
+	document.frm.submit();
+}
+</script>
 <article>
     <h1>주문리스트</h1>
     <form name="frm" method="POST">
@@ -13,8 +25,8 @@
                 <td>
                     주문자 이름
                     <input type="text" name="key" id="key" value="${key}">
-                    <input type="button" value="검색" class="btn">
-                    <input type="button" value="전체보기" name="btn_total" class="btn">
+                    <input type="button" value="검색" class="btn" onclick="go_search_order();">
+                    <input type="button" value="전체보기" name="btn_total" class="btn" onclick="go_total();">
                 </td>
             </tr>
         </table>

@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.juno.controller.action.Action;
-import com.juno.dao.AdminDAO;
+import com.juno.dao.QnaDAO;
 import com.juno.dto.AdminVO;
 import com.juno.dto.QnaVO;
 
@@ -21,7 +21,7 @@ public class AdminQnaDetailAction implements Action {
 			url = "shop.do?command=admin";
 		} else {
 			String qseq = request.getParameter("qseq");
-			QnaVO q = AdminDAO.getIst().getQna(Integer.parseInt(qseq));
+			QnaVO q = QnaDAO.getIst().getQna(Integer.parseInt(qseq));
 			System.out.println(q);
 			request.setAttribute("q", q);
 		}

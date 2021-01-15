@@ -4,10 +4,30 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ include file="/admin/header.jsp"%>
 <%@ include file="/admin/sub_menu.jsp"%>
-
+<script>
+function go_search_qna() {
+    if (document.frm.key.value === "") return;
+    document.frm.action = "shop.do?command=adminQnaList&page=1";
+    document.frm.submit();
+};
+function go_total_qna() {
+    document.frm.key.value = "";
+    document.frm.action = "shop.do?command=adminQnaList&page=1";
+    document.frm.submit();
+};
+</script>
 <article>
     <h1>Q&amp;A 게시글 리스트</h1>
     <form name="frm" method="POST">
+    	<table style="float:right;">
+    		<tr>
+	    		<td>주문자이름
+		    		<input type="text" name="key" value="${key}"/>
+		    		<input type="button" value="검색" class="btn" onclick="go_search_qna();"/>
+		    		<input type="button" value="전체보기" class="btn" onclick="go_total_qna();"/>
+	    		</td>
+    		</tr>
+    	</table>
         <table id="orderList">
             <tr>
                 <th>번호(답변여부)</th>
